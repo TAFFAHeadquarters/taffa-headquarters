@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - TAFFA HEADQUARTERS</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+    <style>
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.5rem;
+            color: white;
+            font-family: var(--font-body);
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary-cyan);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        select.form-control option {
+            background: #000;
+            color: white;
+        }
+
+        .calendly-section {
+            padding: 40px 20px;
+        }
+
+        .cal-wrapper {
+            background: rgba(0, 0, 0, 0.7) !important;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 900px;
+        }
+
+        /* Forcer dark mode Cal.com (si besoin) */
+        .cal-wrapper * {
+            background: transparent !important;
+            color: #FFFFFF !important;
+        }
+
+        .cal-wrapper button,
+        .cal-wrapper .bg-primary {
+            background: #00D4FF !important;
+            /* cyan néon */
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Hover glow sur boutons */
+        .cal-wrapper button:hover {
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.7) !important;
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+    </style>
+  <link rel="stylesheet" crossorigin href="/assets/main-CW_zWfzv.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="text-cyan">⚡</span> TAFFA HEADQUARTERS
+            </a>
+            <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            <nav class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="standardiste.html">Standardiste</a>
+                <a href="assistante-rh.html">Assistante RH</a>
+                <a href="generation-leads.html">Génération Leads</a>
+                <a href="packs-startup.html">Packs Startup</a>
+                <a href="lazarus.html">Lazarus</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="container" style="padding: 8rem 2rem 4rem;">
+        <h1 class="text-gradient" style="text-align: center; margin-bottom: 1rem;">Réservez votre appel découverte</h1>
+        <p class="text-gray" style="text-align: center; margin-bottom: 4rem;">Gratuit (15-30 min) – Discutons de vos
+            besoins.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+            <!-- Form -->
+            <div class="glass-panel" style="padding: 2rem;">
+                <form action="#" method="POST"
+                    onsubmit="event.preventDefault(); alert('Formulaire envoyé ! (Ceci est une démo)');">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" class="form-control" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email professionnel</label>
+                        <input type="email" id="email" class="form-control" required placeholder="john@entreprise.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone / WhatsApp</label>
+                        <input type="tel" id="phone" class="form-control" required placeholder="+261 34 00 000 00">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Entreprise</label>
+                        <input type="text" id="company" class="form-control" placeholder="Nom de votre société">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service intéressé</label>
+                        <select id="service" class="form-control">
+                            <option value="standardiste">Standardiste IA</option>
+                            <option value="rh">Assistante RH</option>
+                            <option value="leads">Génération de Leads</option>
+                            <option value="startup">Packs Startup</option>
+                            <option value="lazarus">Projet Lazarus</option>
+                            <option value="auther">Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message (optionnel)</label>
+                        <textarea id="message" class="form-control" rows="4"
+                            placeholder="Dites-nous en plus sur vos besoins..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Confirmer ma réservation</button>
+                </form>
+            </div>
+
+            <!-- Calendar Placeholder -->
+            <div class="calendly-section" style="max-width: 900px; margin: 0 auto; padding: 20px;">
+                <h2
+                    style="text-align: center; color: #FFFFFF; margin-bottom: 20px; font-weight: bold; font-size: 1.8rem; text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);">
+                    Réservation final call avec Mr. Tsiry
+                </h2>
+                <!-- Portrait CEO -->
+                <div style="text-align: center; margin-bottom: 40px;">
+
+                    <img src="/assets/tsiry-DX7HIzWq.jpg" alt="Mr Tsiry - CEO Taffa Headquarters" style="
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #00D4FF;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        ">
+
+                    <h3 style="
+        margin-top: 20px;
+        color: #FFFFFF;
+        font-weight: 600;
+        letter-spacing: 1px;
+    ">
+                        CEO & Fondateur
+                    </h3>
+
+                    <p style="
+        color: #00D4FF;
+        font-weight: bold;
+        margin-top: 5px;
+        font-size: 1rem;
+    ">
+                        TAFFA HEADQUARTERS
+                    </p>
+
+                </div>
+                <!-- Déclencheur cliquable (bouton ou div) -->
+                <div class="cal-trigger" data-cal-link="taffa-headquarters/appel-decouverte-gratuit-taffa-headquarters"
+                    data-cal-namespace="appel-decouverte-gratuit-taffa-headquarters"
+                    data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                    style="background: rgba(0, 0, 0, 0.7); border-radius: 16px; overflow: hidden; border: 1px solid rgba(0, 212, 255, 0.3); box-shadow: 0 0 30px rgba(0, 212, 255, 0.25); backdrop-filter: blur(10px); padding: 40px; text-align: center; cursor: pointer; transition: all 0.3s;">
+                    <h3 style="color: #00D4FF; margin-bottom: 10px; font-size: 1.5rem;">Cliquez ici pour réserver votre
+                        créneau</h3>
+                    <p style="color: #CBD5E1; margin: 0;">15–30 min – Gratuit – Disponibilités en temps réel</p>
+                </div>
+            </div>
+
+            <!-- Script Cal.com (place-le en bas de la page, avant </body>) -->
+            <script type="text/javascript">
+                (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                Cal("init", "appel-decouverte-gratuit-taffa-headquarters", { origin: "https://app.cal.com" });
+                Cal.ns["appel-decouverte-gratuit-taffa-headquarters"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+            </script>
+        </div>
+        </div>
+        </div>
+
+        <div
+            style="margin-top: 4rem; text-align: center; border-top: 1px solid var(--glass-border); padding-top: 2rem;">
+            <h3 class="text-white">Autres moyens de contact</h3>
+            <p class="text-gray" style="margin-top: 0.5rem;">Antananarivo EAT • WhatsApp • Email</p>
+        </div>
+
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="index.html" class="footer-logo">TAFFA HEADQUARTERS</a>
+            <div class="footer-links">
+                <a href="standardiste.html">Standardiste</a>
+                <a href="assistante-rh.html">Assistante RH</a>
+                <a href="generation-leads.html">Génération Leads</a>
+                <a href="packs-startup.html">Packs Startup</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="copyright">© 2026 TAFFA HEADQUARTERS – Made in Madagascar with AI</p>
+        </div>
+    </footer>
+
+    <script src="src/main.js"></script>
+</body>
+
+</html>

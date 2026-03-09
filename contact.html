@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - TAFFA HEADQUARTERS</title>
+    <link rel="stylesheet" href="src/styles/main.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+    <style>
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.5rem;
+            color: white;
+            font-family: var(--font-body);
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary-cyan);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        select.form-control option {
+            background: #000;
+            color: white;
+        }
+
+        .calendly-section {
+            padding: 40px 20px;
+        }
+
+        .cal-wrapper {
+            background: rgba(0, 0, 0, 0.7) !important;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 900px;
+        }
+
+        /* Forcer dark mode Cal.com (si besoin) */
+        .cal-wrapper * {
+            background: transparent !important;
+            color: #FFFFFF !important;
+        }
+
+        .cal-wrapper button,
+        .cal-wrapper .bg-primary {
+            background: #00D4FF !important;
+            /* cyan néon */
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Hover glow sur boutons */
+        .cal-wrapper button:hover {
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.7) !important;
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        /* Styles additionnels Formulaire Progressif */
+        .iti {
+            width: 100%;
+        }
+
+        .iti__country-list {
+            background-color: #111 !important;
+            border: 1px solid var(--glass-border) !important;
+            color: white !important;
+        }
+
+        .iti__country.iti__highlight {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .iti__selected-flag {
+            background-color: transparent !important;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            /* Écart minimal */
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-radio {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 0.95rem;
+            padding: 2px 8px;
+            /* Padding minimal */
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .custom-radio:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .custom-radio input[type="radio"] {
+            accent-color: var(--color-primary-cyan);
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .custom-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            color: #CBD5E1;
+            font-size: 0.9rem;
+            line-height: 1.3;
+            background: rgba(0, 212, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            margin-top: 1rem;
+        }
+
+        .custom-checkbox input[type="checkbox"] {
+            accent-color: var(--color-primary-cyan);
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        #step2 {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        #step2.visible {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+    <!-- Intl-tel-input pour les drapeaux et indicatifs téléphoniques -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.2.1/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.2.1/js/intlTelInput.min.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="text-cyan">⚡</span> TAFFA HEADQUARTERS
+            </a>
+            <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            <nav class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="standardiste.html">Standardiste</a>
+                <a href="generation-leads.html">Génération Leads</a>
+                <a href="assistante-rh.html">Assistante RH</a>
+                <a href="AI%20Sales%20Machine.html">AI Sales Machine</a>
+                <a href="Partner%20Agency.html">Partenaires</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="container" style="padding: 6rem 2rem 4rem;">
+        <h1 class="text-gradient" style="text-align: center; margin-bottom: 1rem;">Réservez votre appel découverte</h1>
+        <p class="text-gray" style="text-align: center; margin-bottom: 4rem;">Gratuit (15-30 min) – Discutons de vos
+            besoins.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+            <!-- Form -->
+            <div class="glass-panel" style="padding: 2rem;">
+
+                <div style="margin-bottom: 2rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
+                    <p
+                        style="text-transform: uppercase; letter-spacing: 2px; color: #CBD5E1; font-size: 0.8rem; margin: 0 0 5px 0;">
+                        Remplir le formulaire</p>
+                    <h2 style="color: white; font-size: 1.5rem; margin: 0 0 15px 0;">Réservez votre événement</h2>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <span style="font-size: 1.5rem;">⚡</span>
+                        <h3 style="color: var(--color-primary-cyan); margin: 0; font-size: 1.2rem;">Découverte TAFFA
+                            Headquarters</h3>
+                    </div>
+                    <p style="color: #CBD5E1; font-size: 0.95rem; line-height: 1.3; margin: 0;">
+                        Réservez votre appel de découverte directement avec un membre de notre équipe pour assurer votre
+                        croissance avec l'IA !!!
+                    </p>
+                </div>
+
+                <form id="contactForm">
+                    <!-- Options Cachées FormSubmit -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="Nouveau Lead - Taffa Headquarters!">
+
+                    <!-- ETAPE 1 -->
+                    <div id="step1">
+                        <div class="form-group">
+                            <label for="name">Nom et Prénom *</label>
+                            <input type="text" id="name" name="name" class="form-control" required
+                                placeholder="Ex: John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse e-mail *</label>
+                            <input type="email" id="email" name="email" class="form-control" required
+                                placeholder="john@entreprise.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone *</label>
+                            <!-- L'input sera transformé par intl-tel-input -->
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        <button type="button" id="btnContinueStep" class="btn btn-primary"
+                            style="width: 100%; margin-top: 1rem;">Continuer</button>
+                    </div>
+
+                    <!-- ETAPE 2 -->
+                    <div id="step2">
+                        <div class="form-group">
+                            <label>Quel est ton profil aujourd’hui ? *</label>
+                            <div class="radio-group">
+                                <label class="custom-radio">
+                                    <input type="radio" name="profil" value="Salarié(e)" required>
+                                    Salarié(e)
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="profil" value="Freelance / Auto-entrepreneur">
+                                    Freelance / Auto-entrepreneur
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="profil" value="Entrepreneur avec un business existant">
+                                    Entrepreneur avec un business existant
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="profil" value="En transition">
+                                    En transition (reconversion pro, fin d’études, etc.)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Quel est ton revenu mensuel actuel ? *</label>
+                            <div class="radio-group">
+                                <label class="custom-radio">
+                                    <input type="radio" name="revenu" value="Moins de 1 500 €" required>
+                                    Moins de 1 500 €
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="revenu" value="1 500 € – 3 000 €">
+                                    1 500 € – 3 000 €
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="revenu" value="3 000 € – 5 000 €">
+                                    3 000 € – 5 000 €
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="revenu" value="5 000 € et plus">
+                                    5 000 € et plus
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Votre engagement à être présent(e) :</label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="engagement" required>
+                                <span>Je m’engage à être présent(e) et ponctuel(le) à l’appel que je réserve. En cas
+                                    d’absence ou de retard sans prévenir, ma candidature pourra être annulée et je ne
+                                    pourrai plus postuler à l’avenir.</span>
+                            </label>
+                        </div>
+
+                        <p style="font-size: 0.8rem; color: #CBD5E1; margin: 1.5rem 0; text-align: center;">
+                            En saisissant vos informations, vous acceptez que vos données soient enregistrées
+                            conformément à nos <a href="politique-confidentialite.html" target="_blank"
+                                style="color: var(--color-primary-cyan); text-decoration: underline;">conditions et
+                                politique de confidentialité</a>.
+                        </p>
+
+                        <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">Confirmer ma
+                            réservation</button>
+                    </div>
+
+                    <div id="formStatus"
+                        style="display:none; text-align:center; padding-top:10px; color:var(--color-primary-cyan);">
+                        Envoi en cours...
+                    </div>
+                </form>
+            </div>
+            <!-- CEO Profile & Manual Calendar Trigger -->
+            <div class="glass-panel"
+                style="padding: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <h2
+                    style="text-align: center; color: #FFFFFF; margin-bottom: 20px; font-weight: bold; font-size: 1.8rem; text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);">
+                    Réservation final call avec Mr. Tsiry
+                </h2>
+                <!-- Portrait CEO -->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <img src="images/tsiry.jpg" alt="Mr Tsiry - CEO Taffa Headquarters" style="
+                        width: 180px;
+                        height: 180px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                        border: 3px solid #00D4FF;
+                        box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+                    ">
+                    <h3 style="margin-top: 20px; color: #FFFFFF; font-weight: 600; letter-spacing: 1px;">
+                        CEO & Fondateur
+                    </h3>
+                    <h3 style="margin-top: 20px; color: #FFFFFF; font-weight: 600; letter-spacing: 1px;">
+                        Ingénieur et Expert en IA
+                    </h3>
+                    <p style="color: #00D4FF; font-weight: bold; margin-top: 5px; font-size: 1rem;">
+                        TAFFA HEADQUARTERS
+                    </p>
+                </div>
+
+                <!-- Texte descriptif (non cliquable) -->
+                <div
+                    style="background: rgba(0, 0, 0, 0.7); border-radius: 16px; overflow: hidden; border: 1px solid rgba(0, 212, 255, 0.3); box-shadow: 0 0 30px rgba(0, 212, 255, 0.25); backdrop-filter: blur(10px); padding: 20px; text-align: center; transition: all 0.3s; width: 100%;">
+                    <h3 style="color: #00D4FF; margin-bottom: 10px; font-size: 1.3rem;">Veuillez remplir le formulaire
+                        pour réserver votre
+                        créneau</h3>
+                    <p style="color: #CBD5E1; margin: 0; font-size: 0.9rem;">15–30 min – Gratuit – Disponibilités en
+                        temps réel</p>
+                </div>
+
+                <!-- Déclencheur caché pour le script Cal.com -->
+                <div class="cal-trigger" data-cal-link="taffa-headquarters/appel-decouverte-gratuit-taffa-headquarters"
+                    data-cal-namespace="appel-decouverte-gratuit-taffa-headquarters"
+                    data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' style="display: none;">
+                </div>
+            </div>
+        </div>
+
+        <div class="calendly-section" style="display: none;"></div>
+
+        <!-- Script Cal.com, FormSubmit, et Logique Formulaire -->
+        <script type="text/javascript">
+            // 0. Initialisation Intl-Tel-Input
+            const phoneInputField = document.querySelector("#phone");
+            const phoneInput = window.intlTelInput(phoneInputField, {
+                preferredCountries: ["mg", "fr", "us", "ca"], // Mada, France, US, Canada priorisés
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.2.1/js/utils.js",
+                separateDialCode: true,
+            });
+
+            // 0.5 Gestion Progression Formulaire (Etape 1 -> Etape 2)
+            const step1 = document.getElementById("step1");
+            const step2 = document.getElementById("step2");
+            const btnContinueStep = document.getElementById("btnContinueStep");
+
+            btnContinueStep.addEventListener("click", () => {
+                // Valider champs Etape 1
+                const nameInput = document.getElementById("name");
+                const emailInput = document.getElementById("email");
+
+                if (!nameInput.checkValidity()) {
+                    nameInput.reportValidity();
+                    return;
+                }
+                if (!emailInput.checkValidity()) {
+                    emailInput.reportValidity();
+                    return;
+                }
+                if (!phoneInput.isValidNumber()) {
+                    phoneInputField.setCustomValidity("Numéro de téléphone invalide.");
+                    phoneInputField.reportValidity();
+                    return;
+                } else {
+                    phoneInputField.setCustomValidity("");
+                }
+
+                // Cacher bouton continuer, afficher etape 2
+                btnContinueStep.style.display = "none";
+                step2.classList.add("visible");
+            });
+
+
+            // 1. Initialisation de Cal.com
+            (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+            Cal("init", "appel-decouverte-gratuit-taffa-headquarters", { origin: "https://app.cal.com" });
+            Cal.ns["appel-decouverte-gratuit-taffa-headquarters"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+
+            // 2. Gestion de la soumission du formulaire vers FormSubmit en AJAX
+            const contactForm = document.getElementById("contactForm");
+            const submitBtn = document.getElementById("submitBtn");
+            const formStatus = document.getElementById("formStatus");
+
+            contactForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                // On récupère le numéro de tel formaté international avant l'envoi
+                const fullPhone = phoneInput.getNumber();
+
+                // UI changes during submission
+                submitBtn.style.display = "none";
+                formStatus.style.display = "block";
+                formStatus.textContent = "Préparation de votre réservation...";
+
+                const formData = new FormData(contactForm);
+                // Ecraser ou ajouter la valeur du téléphone formaté complet
+                formData.set("phone", fullPhone);
+
+                fetch("https://formsubmit.co/ajax/contact@taffaheadquarters.com", {
+                    method: "POST",
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        formStatus.textContent = "Informations envoyées ! Ouverture du calendrier...";
+
+                        // On déclenche le modal Cal.com manuellement après 1s
+                        setTimeout(() => {
+                            Cal("ui", {
+                                "styles": { "branding": { "brandColor": "#00D4FF" } },
+                                "hideEventTypeDetails": false,
+                                "layout": "month_view"
+                            });
+                            Cal.ns["appel-decouverte-gratuit-taffa-headquarters"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+
+                            // Si la commande UI ne popup pas immédiatement, hack clic:
+                            document.querySelector('.cal-trigger').click();
+
+                            // Reset form complet
+                            contactForm.reset();
+                            submitBtn.style.display = "block";
+                            submitBtn.textContent = "Réserver un autre créneau";
+                            formStatus.style.display = "none";
+
+                            // Replonger à l'étape 1
+                            step2.classList.remove("visible");
+                            btnContinueStep.style.display = "block";
+
+                        }, 800);
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        formStatus.textContent = "Une erreur s'est produite. Veuillez réessayer.";
+                        formStatus.style.color = "red";
+                        submitBtn.style.display = "block";
+                    });
+            });
+        </script>
+        </div>
+
+        <div
+            style="margin-top: 4rem; text-align: center; border-top: 1px solid var(--glass-border); padding-top: 2rem;">
+            <h3 class="text-white">Autres moyens de contact</h3>
+            <p class="text-gray" style="margin-top: 1rem;">
+                <strong>Téléphone / WhatsApp :</strong> <a href="tel:+261345612182" class="text-cyan">+261 34 56 121
+                    82</a><br>
+                <strong>Email :</strong> <a href="mailto:contact@taffaheadquarters.com"
+                    class="text-cyan">contact@taffaheadquarters.com</a><br>
+                <span style="display:inline-block; margin-top: 0.5rem;">📍 Antananarivo EAT</span>
+            </p>
+
+            <div style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem;">
+                <a href="#" target="_blank" aria-label="Facebook"
+                    style="color: white; transition: color 0.3s; display: inline-block;"
+                    onmouseover="this.style.color='#00D4FF'" onmouseout="this.style.color='white'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="#" target="_blank" aria-label="LinkedIn"
+                    style="color: white; transition: color 0.3s; display: inline-block;"
+                    onmouseover="this.style.color='#00D4FF'" onmouseout="this.style.color='white'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="#" target="_blank" aria-label="X (Twitter)"
+                    style="color: white; transition: color 0.3s; display: inline-block;"
+                    onmouseover="this.style.color='#00D4FF'" onmouseout="this.style.color='white'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                        <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                    </svg>
+                </a>
+                <a href="#" target="_blank" aria-label="YouTube"
+                    style="color: white; transition: color 0.3s; display: inline-block;"
+                    onmouseover="this.style.color='#00D4FF'" onmouseout="this.style.color='white'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                        </path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                    </svg>
+                </a>
+                <a href="#" target="_blank" aria-label="TikTok"
+                    style="color: white; transition: color 0.3s; display: inline-block;"
+                    onmouseover="this.style.color='#00D4FF'" onmouseout="this.style.color='white'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                    </svg>
+                </a>
+                <a href="https://wa.me/261345612182" target="_blank" aria-label="WhatsApp"
+                    style="color: white; transition: color 0.3s; display: inline-block;"
+                    onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='white'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
+                        <path
+                            d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1">
+                        </path>
+                    </svg>
+                </a>
+                <a href="#" target="_blank" aria-label="Instagram"
+                    style="color: white; transition: color 0.3s; display: inline-block;"
+                    onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='white'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="index.html" class="footer-logo">TAFFA HEADQUARTERS</a>
+            <div class="footer-links">
+                <a href="index.html">Accueil</a>
+                <a href="standardiste.html">Standardiste</a>
+                <a href="generation-leads.html">Génération Leads</a>
+                <a href="assistante-rh.html">Assistante RH</a>
+                <a href="AI%20Sales%20Machine.html">AI Sales Machine</a>
+                <a href="Partner%20Agency.html">Partenaires</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="copyright">© 2026 TAFFA HEADQUARTERS – Made in Madagascar with AI</p>
+        </div>
+    </footer>
+
+    <script src="src/main.js"></script>
+</body>
+
+</html>
